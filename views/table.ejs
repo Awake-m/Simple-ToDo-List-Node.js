@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+</head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 90vh;
+            width: 100%;
+            /* border: 1px solid black; */
+        }
+        #box1{
+            height: 50px;
+            width: 80%;
+            /* border: 1px solid black; */
+            margin-left: 10%;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+<body>
+    <div id="box1">
+    <h1>Book List</h1>
+          <div style="margin-left: 70%;">
+                <button onclick="add()" style="height: 35px; margin-top: 6px; width: 150px; background-color: skyblue; border: none; border-radius: 10px;"><a href="" style="text-decoration: none; color: white; font-weight: bold;">Add New Book</a></button>
+           </div><br><br>
+    </div><br>
+
+
+    <div style="height: 50px; width: 80%; margin-left: 10%; background-color: rgb(195, 232, 247);"></div><br><br>
+    <div>
+    <form method="post" action="/insert" >
+        <table style="width: 80%; margin-left:10%; height: 35vh; text-align: center; border: 5px dotted skyblue;">
+            <tr><br><br>
+                <td>Sr No.</td>
+                <td><input type="text" style="height: 99%; width: 70%; border: 1px solid skyblue;" name="no" placeholder="Enter Sr.no"></td>
+            </tr>
+            <tr>
+                <td>Title</td>
+                <td><input type="text" style="height: 99%; width: 70%; border: 1px solid skyblue;" name="title" placeholder="Enter A Book Title"></td>
+            </tr>
+            <tr>
+                <td>Author</td>
+                <td><input type="text" style="height: 99%; width: 70%; border: 1px solid skyblue;" name="author" placeholder="Enter Author Name"></td>
+            </tr>
+            <tr>
+                <td>Type</td>
+                <td><input type="text" style="height: 99%; width: 70%; border: 1px solid skyblue;" name="type" placeholder="Enter The Book Type"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit" style="height: 35px; margin-left: -260px; margin-top: 6px; width: 150px; background-color: skyblue; border: none; border-radius: 10px;  color: white;">Add-Data</button></td>
+            </tr>
+        </table>
+    </form><br><br><br>
+
+
+
+    <table style="width: 80%; margin-left:10%; text-align: center; border: 5px dotted skyblue;">
+        <tr style="height: 50px; background-color: skyblue; color: white;">
+            <th>No</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Type</th>
+            <th colspan="3">Action</th>
+        </tr>
+        <%book.map((val)=>{%>
+            <tr>
+                <td style="height: 40px;"><%=val.no%></td>
+                <td style="height: 40px;"><%=val.title%></td>
+                <td style="height: 40px;"><%=val.author%></td>
+                <td style="height: 40px;"><%=val.type%></td>
+                <td style="height: 20px; background-color: red; width: 120px; border-radius: 15px; border: none;"><a style="text-decoration: none; color: white;" href="/delete?no=<%=val.no%>">delete</a></td>
+                <td style="height: 20px; background-color: orange; width: 120px; border-radius: 15px; border: none;"><a style="text-decoration: none; color: white;" href="/edit?no=<%=val.no%>">edit</a></td>
+                
+            </tr>
+        <%})%>
+    </table>
+</div>
+</body>
+</html>
